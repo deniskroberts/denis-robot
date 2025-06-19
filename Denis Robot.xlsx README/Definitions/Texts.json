@@ -1,0 +1,44 @@
+{
+  "Texts": [
+    {
+      "Name": "GetOrdinalSuffix.lambda",
+      "Description": "Definition of GetOrdinalSuffix lambda function.",
+      "Type": "ExcelNameText",
+      "ContentType": "ExcelFormula",
+      "Value": "\r\n\r\n",
+      "Location": "GetOrdinalSuffix"
+    },
+    {
+      "Name": "OrdinalDate.lambda",
+      "Description": "Definition of OrdinalDate lambda function.",
+      "Type": "ExcelNameText",
+      "ContentType": "ExcelFormula",
+      "Value": "/*Convert any date or range of date values into a date in long format, including \"th\" suffixes.  */\r\nOrdinalDate = LAMBDA(dates, LET(\n   \\\\LambdaName, \"OrdinalDate\",\n   \\\\CommandName, \"Ordinal Date\",\n   \\\\Description, \"Convert any date or range of date values into a date in long format, including \"\"th\"\" suffixes\",\n   TEXT(dates, \"dddd d\") & OrdinalSuffix(DAY(dates)) & TEXT(dates, \" mmmm yyyy\")\n));",
+      "Location": "OrdinalDate"
+    },
+    {
+      "Name": "OrdinalNumber.lambda",
+      "Description": "Definition of OrdinalNumber lambda function.",
+      "Type": "ExcelNameText",
+      "ContentType": "ExcelFormula",
+      "Value": "OrdinalNumber = LAMBDA(number, LET(\\\\LambdaName, \"MakeOrdinalNumber\", number & OrdinalSuffix(number)));",
+      "Location": "OrdinalNumber"
+    },
+    {
+      "Name": "OrdinalSuffix.lambda",
+      "Description": "Definition of OrdinalSuffix lambda function.",
+      "Type": "ExcelNameText",
+      "ContentType": "ExcelFormula",
+      "Value": "OrdinalSuffix = LAMBDA(number, LET(\n   \\\\LambdaName, \"OrdinalSuffix\",\n   IF(\n      (MOD(number, 100) > 10) * (MOD(number, 100) < 14),\n      \"th\",\n      SWITCH(MOD(number, 10), 1, \"st\", 2, \"nd\", 3, \"rd\", \"th\")\n   )\n));",
+      "Location": "OrdinalSuffix"
+    },
+    {
+      "Name": "ShowFormulas.lambda",
+      "Description": "Definition of ShowFormulas lambda function.",
+      "Type": "ExcelNameText",
+      "ContentType": "ExcelFormula",
+      "Value": "ShowFormulas = LAMBDA(Reference, LET(\n   \\\\LambdaName, \"ShowFormulas\",\n   \\\\CommandName, \"Show Formulas\",\n   c, Reference,\n   f, TOCOL(ADDRESS(ROW(c), COLUMN(c), 4) & \": \" & FORMULATEXT(c), 3),\n   r, DROP(REDUCE({\"\"}, f, LAMBDA(s,x, VSTACK(s, TEXTSPLIT(x, , \"\n\")))), 1),\n   r\n));",
+      "Location": "ShowFormulas"
+    }
+  ]
+}

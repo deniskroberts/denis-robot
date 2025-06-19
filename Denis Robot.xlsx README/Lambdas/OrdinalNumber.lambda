@@ -1,0 +1,1 @@
+OrdinalNumber =LAMBDA(number, LET(\\LambdaName, "MakeOrdinalNumber", number & OrdinalSuffix(number)));

@@ -1,0 +1,9 @@
+/*
+Convert any date or range of date values into a date in long format, including "th" suffixes.  
+*/
+OrdinalDate =LAMBDA(dates, LET(
+   \\LambdaName, "OrdinalDate",
+   \\CommandName, "Ordinal Date",
+   \\Description, "Convert any date or range of date values into a date in long format, including ""th"" suffixes",
+   TEXT(dates, "dddd d") & OrdinalSuffix(DAY(dates)) & TEXT(dates, " mmmm yyyy")
+));
