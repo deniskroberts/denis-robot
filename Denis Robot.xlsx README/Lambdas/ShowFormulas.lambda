@@ -1,9 +1,0 @@
-ShowFormulas =LAMBDA(Reference, LET(
-   \\LambdaName, "ShowFormulas",
-   \\CommandName, "Show Formulas",
-   c, Reference,
-   f, TOCOL(ADDRESS(ROW(c), COLUMN(c), 4) & ": " & FORMULATEXT(c), 3),
-   r, DROP(REDUCE({""}, f, LAMBDA(s,x, VSTACK(s, TEXTSPLIT(x, , "
-")))), 1),
-   r
-));

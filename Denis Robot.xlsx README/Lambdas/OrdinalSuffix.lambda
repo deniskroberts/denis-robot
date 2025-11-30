@@ -1,8 +1,0 @@
-OrdinalSuffix =LAMBDA(number, LET(
-   \\LambdaName, "OrdinalSuffix",
-   IF(
-      (MOD(number, 100) > 10) * (MOD(number, 100) < 14),
-      "th",
-      SWITCH(MOD(number, 10), 1, "st", 2, "nd", 3, "rd", "th")
-   )
-));
